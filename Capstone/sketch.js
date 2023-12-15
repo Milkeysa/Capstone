@@ -3,24 +3,31 @@
 // Date
 
 // Global Variables
-let player; let playerView;
+let player; 
+let playerView;
 let opponent = [];
-let playerX = 200; let playerY = 200;
+let playerX = 0;//player starting x point 
+let playerY = 0;//player starting y point
 
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  box()
+  
   //calling the functions
   playerView = map(mouseX, 0, windowWidth, playerX, playerY);
+  angleMode(DEGREES);
 }
 
 function draw() {
-  background(220);
+  background("lightblue");
   //drawing the functions
-  player = square(playerX,playerY,20);
+  fill("red");
+  rotateX(80);
+  //rotateY(0);
+  box(10000,10000,29);
   rectMode(CENTER);
   playerMoves();
+  startingMap();
 }
 
 //starting 2d 
@@ -33,7 +40,16 @@ function keyPressed(){
 
 function playerMoves(){
   let border = 10;
+  push();
+  translate(playerX,playerY);
+  fill("white");
+  box(5,30,60);
+  pop();
   //restricting player to canvas
+  if(fill ==="red"){
+    playerY = 0;
+    playerX = 0;
+  }
   if(key === "s"|| key === "S" || keyCode === DOWN_ARROW ){
     playerY = playerY + border;
   }
@@ -46,16 +62,16 @@ function playerMoves(){
   if(key=== "w"|| key === "W" || keyCode === UP_ARROW){
     playerY = playerY - border;
   }
-  if(playerX-border === windowWidth){
+  if(playerX-border === -140){
     playerX = playerX + border;
   }
-  if(playerX+border === windowWidth){
+  if(playerX+border === 140){
     playerX = playerX - border;
   }
-  if(playerY-border === windowHeight){
+  if(playerY-border === -140){
     playerY = playerY + border;
   }
-  if(playerY+border === windowHeight){
+  if(playerY+border === 140){
     playerY = playerY - border;
   }
 }
@@ -64,14 +80,22 @@ function playerMoves(){
 //should start 3d not 2d
 function basicMap(){
   translate(0,200);
-  box(0,250,100);
-  
+  box(100,100,200);
 }
+
 function startingMap(){
+  fill("grey");
+  let wallheight = 120;
+  translate(-150,0);
+  box(10,300,wallheight);
+  translate(300,0);
+  box(10,300,wallheight);
+  translate(-150,-150);
+  box(300,10,wallheight);
 
 }
 // other players/opponents
-//can start 2d
+//can start 2d*
 
 // gun creation (SAFE AND PG) ps we dont know how to be mean yet
 
