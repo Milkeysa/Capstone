@@ -650,11 +650,11 @@ class EasyCam {
   //
 
   /** implemented zoom-cb for mouswheel handler.*/
-  mouseWheelZoom() {
-    var cam = this;
-    var mouse = cam.mouse;
-    cam.dampedZoom.addForce(mouse.mwheel * cam.scale_zoomwheel);
-  }
+  // mouseWheelZoom() {
+  //   var cam = this;
+  //   var mouse = cam.mouse;
+  //   cam.dampedZoom.addForce(mouse.mwheel * cam.scale_zoomwheel);
+  // }
 
   /** implemented zoom-cb for mousedrag/touch handler.*/
   mouseDragZoom() {

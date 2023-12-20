@@ -6,20 +6,21 @@
 let player;
 let playerView;
 let opponent = [];
-let border = 11;
+let border = 10;
 let playerX = 0;//player starting x point 
 let playerY = 0;//player starting y point
 let easyCam, state = {
-    distance: 208,
-    center  : [5, 3, -13],
-    rotation: [0.3, -0.4, -0.1, 0.85]
-  }, 
-  f, x=0, y=20;
+    distance: 100,
+    center  : [playerX,playerY,0],
+    rotation: [mouseX, mouseY, 0.1, 0.85],
+    viewPoint : [playerX,playerY,20,20] 
+};
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  easycam = createEasyCam();
-
+  
+  // easycam = createEasyCam();
+  // setViewport(viewPoint);
   // set initial camera state
   //easycam.setState(state, 1000); // animate to state in 1 second
   //easycam.state_reset = state;   // state to use on reset
@@ -27,19 +28,30 @@ function setup() {
   playerView = map(mouseX, 0, windowWidth, playerX, playerY);
   angleMode(DEGREES);
 }
-
+rotateZ(80);
 function draw() {
+  
   background("lightblue");
   //drawing the functions
   fill("red");
-  //rotateY(0);
-  // easycam.beginHUD();
+  // rotateY(0);
   // noLights();
   // let state = easycam.getState();
   // translate(0,playerY/2, 0);
-  
-  translate(playerX*-1, 0);
-  translate(0,90,playerY);
+
+  // if (keyIsDown("s")|| keyIsDown("S") || keyCode === DOWN_ARROW|| onkeydown === "s") {
+  //   playerY = playerY + border;
+  //   rotateX(270);
+  //   translate(0, playerY*-.16 -100, playerY*-1);
+  // }
+  // if (keyIsDown("w") || keyIsDown("W") || keyCode === UP_ARROW) {
+  //   playerY = playerY - border;
+  //   rotateX(90);
+  //   rotateY(80);
+  //   translate(0, playerY*-.16 -90, playerY*-1);
+  // }
+  // translate(playerX*-1, 0, playerY*-1);
+
   // rotateZ(playerY/13);
   rotateX(80);
   box(10000, 10000, 29);
@@ -47,8 +59,8 @@ function draw() {
   startingMap();
   playerMoves();
   
-  strokeWeight(2);
-  //noStroke();
+  //strokeWeight(2);
+  // noStroke();
   
 }
 
