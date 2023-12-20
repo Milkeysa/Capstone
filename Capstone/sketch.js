@@ -38,7 +38,8 @@ function draw() {
   // let state = easycam.getState();
   // translate(0,playerY/2, 0);
   
-  translate(playerX*-1, 0,playerY*-1);
+  translate(playerX*-1, 0);
+  translate(0,90,playerY);
   // rotateZ(playerY/13);
   rotateX(80);
   box(10000, 10000, 29);
