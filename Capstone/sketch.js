@@ -9,26 +9,30 @@ let opponent = [];
 let border = 10;
 let playerX = 0;//player starting x point 
 let playerY = 0;//player starting y point
-let easyCam, state = {
-    distance: 100,
-    center  : [playerX,playerY,0],
-    rotation: [mouseX, mouseY, 0.1, 0.85],
-    viewPoint : [playerX,playerY,20,20] 
-};
+let rover;
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  
-  // easycam = createEasyCam();
-  // setViewport(viewPoint);
-  // set initial camera state
-  //easycam.setState(state, 1000); // animate to state in 1 second
-  //easycam.state_reset = state;   // state to use on reset
+  push()
+  rover = createRoverCam();
+  movedY + 900;
+  rover.setState = {
+    active: true,
+    enableControl: false,
+    position: [0,0,0],
+    rotation: [0,0.1,0],
+    offset: [0,90],
+    fov: 0.5,
+    speed: 100,
+    sensitivity: 0.0001
+  };
+
   //calling the functions
   playerView = map(mouseX, 0, windowWidth, playerX, playerY);
   angleMode(DEGREES);
 }
-rotateZ(80);
+// rotateZ(80);
+
 function draw() {
   
   background("lightblue");
@@ -39,17 +43,28 @@ function draw() {
   // let state = easycam.getState();
   // translate(0,playerY/2, 0);
 
-  // if (keyIsDown("s")|| keyIsDown("S") || keyCode === DOWN_ARROW|| onkeydown === "s") {
-  //   playerY = playerY + border;
-  //   rotateX(270);
-  //   translate(0, playerY*-.16 -100, playerY*-1);
-  // }
-  // if (keyIsDown("w") || keyIsDown("W") || keyCode === UP_ARROW) {
-  //   playerY = playerY - border;
+  if (keyIsDown("s")|| keyIsDown("S") || keyCode === DOWN_ARROW|| onkeydown === "s") {
+    if (playerY - border === 0) {
+      playerY = playerY + border;
+    }
+    if (playerY + border === -140) {
+      playerY = playerY - border;
+    }
+    playerY = playerY + border;
   //   rotateX(90);
-  //   rotateY(80);
+  //   translate(0, playerY*-.16 -100, playerY*-1);
+  }
+  if (keyIsDown("w") || keyIsDown("W") || keyCode === UP_ARROW) {
+    if (playerY - border === 0) {
+      playerY = playerY + border;
+    }
+    if (playerY + border === -50) {
+      playerY = playerY - border;
+    }
+    playerY = playerY - border;
+  //   rotateX(90);
   //   translate(0, playerY*-.16 -90, playerY*-1);
-  // }
+  }
   // translate(playerX*-1, 0, playerY*-1);
 
   // rotateZ(playerY/13);
@@ -124,10 +139,10 @@ function playerMoves() {
   if (playerX + border === 140) {
     playerX = playerX - border;
   }
-  if (playerY - border === -140) {
+  if (playerY - border === -10) {
     playerY = playerY + border;
   }
-  if (playerY + border === 140) {
+  if (playerY + border === 150) {
     playerY = playerY - border;
   }
 }
