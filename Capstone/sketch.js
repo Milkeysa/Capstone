@@ -19,10 +19,10 @@ function setup() {
   rover.setState = {
     active: true,
     enableControl: false,
-    position: [0,0,0],
+    position: [0,90000000,0],
     rotation: [0,0.1,0],
     offset: [0,90],
-    fov: 0.5,
+    fov: 1,
     speed: 100,
     sensitivity: 0.0001
   };
@@ -68,7 +68,7 @@ function draw() {
   // translate(playerX*-1, 0, playerY*-1);
 
   // rotateZ(playerY/13);
-  rotateX(80);
+  //rotateX(80);
   box(10000, 10000, 29);
   rectMode(CENTER);
   startingMap();
@@ -124,11 +124,11 @@ function playerMoves() {
   }
   if (keyIsDown("a")|| keyIsDown( "A") || keyCode === LEFT_ARROW) {
     playerX = playerX - border;
-    rotateZ(playerX);
+    //rotateZ(playerX);
   }
   if (keyIsDown("d") || keyIsDown("D") || keyCode === RIGHT_ARROW) {
     playerX = playerX + border;
-    rotateZ(playerX);
+    //rotateZ(playerX);
   }
   if (keyIsDown("w") || keyIsDown("W") || keyCode === UP_ARROW) {
     playerY = playerY - border;
