@@ -26,15 +26,18 @@ function draw() {
   //translate(playerX*-1, 0);
   translate(0,90,playerY);
 
-  if (keyIsDown("s")|| keyIsDown("S") || keyCode === DOWN_ARROW|| onkeydown === "s") {
-    playerY = playerY + border;
-    rotateX(playerY);
-  }
-  if (keyIsDown("w") || keyIsDown("W") || keyCode === UP_ARROW) {
-    playerY = playerY - border;
-    rotateX(playerY);
-    // translate(0,playerY , 0);
-  }
+  // if (keyIsDown("s")|| keyIsDown("S") || keyCode === DOWN_ARROW|| onkeydown === "s") {
+  //   playerY = playerY + border;
+  //   rotateZ(180);
+  //   rotateZ(playerX);
+  // }
+  // if (keyIsDown("w") || keyIsDown("W") || keyCode === UP_ARROW) {
+  //   playerY = p2layerY - border;
+  //   rotateZ(90);
+  //   rotateZ(playerX);
+  //   // translate(0,playerY , 0);
+  // }
+  translate(playerX,0, playerY*1);
   translate(playerX*-1, 0, playerY*-1);
   box(10000, 10000, 29);
   rectMode(CENTER);
@@ -84,7 +87,6 @@ function playerMoves() {
     playerY = playerY + border;
   }
   if (keyIsDown("a")|| keyIsDown( "A") || keyCode === LEFT_ARROW) {
-    
     playerX = playerX - border;
     rotateZ(playerX);
   }
