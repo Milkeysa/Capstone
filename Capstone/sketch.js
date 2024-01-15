@@ -27,17 +27,15 @@ function draw() {
   translate(0,90,playerY);
 
   if (keyIsDown("s")|| keyIsDown("S") || keyCode === DOWN_ARROW|| onkeydown === "s") {
-    playerY = playerY - border;
-    // rotateX(180);
-    translate(0,playerY, 0);
+    playerY = playerY + border;
+    rotateX(playerY);
   }
   if (keyIsDown("w") || keyIsDown("W") || keyCode === UP_ARROW) {
-    playerY = playerY + border;
-    // rotateX(90);
-    translate(0,playerY , 0);
+    playerY = playerY - border;
+    rotateX(playerY);
+    // translate(0,playerY , 0);
   }
   translate(playerX*-1, 0, playerY*-1);
-  rotateX(0);
   box(10000, 10000, 29);
   rectMode(CENTER);
   startingMap();
